@@ -72,3 +72,9 @@ group :test do
 end
 
 gem "hotwire-rails", "~> 0.1.3"
+
+gem "devise", "~> 4.9"
+
+gem "bootstrap"
+gem "sassc-rails"
+gem "rails_live_reload"
