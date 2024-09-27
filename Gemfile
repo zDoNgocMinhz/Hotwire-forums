@@ -78,3 +78,6 @@ gem "devise", "~> 4.9.4"
 gem "bootstrap"
 gem "sassc-rails"
 gem "rails_live_reload"
+
+gem "view_component"
+
