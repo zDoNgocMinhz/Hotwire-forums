@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_discussion, only: [:edit, :update]
+  before_action :set_discussion, only: [:edit, :update, :destroy, :show]
 
   def index
     @discussions = Discussion.all
@@ -22,6 +22,9 @@ class DiscussionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -33,6 +36,11 @@ class DiscussionsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    @discussion.destroy!
+    redirect_to discussions_path, flash: {success: "Discussion removed!"}
   end
 
   private
