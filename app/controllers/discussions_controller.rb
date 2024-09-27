@@ -1,6 +1,29 @@
 class DiscussionsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    flash[:success] = "Record was successfully created"
     @discussions = Discussion.all
+  end
+
+  def new
+    @discussion = Discussion.new
+  end
+
+  def create
+    @discussion = Discussion.new(discussion_params)
+
+    respond_to do |format|
+      if @discussion.save
+        format.html { redirect_to discussions_path, flash: {success: "Successfully checked in"} }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  private
+
+  def discussion_params
+    params.require(:discussion).permit(:name, :closed, :pinned)
   end
 end
