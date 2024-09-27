@@ -1,0 +1,9 @@
+<div class="flash flash__message alert alert-<%= @type %>" role="alert">
+    <%= @message %>
+</div>
+<script>
+    setTimeout(() => {
+        const element = document.querySelector(".flash__message");
+        element.remove();
+    }, 5000);
+</script>
